@@ -12,30 +12,30 @@ public class BS2dArray {
         {28,29,37,49},
         {33,34,38,50}
      };
-     int target=37;
+     int target=389;
 
      System.out.println(Arrays.toString(findTargetIn2dArray(arr, target)));
 
    }
 
    public static int[]  findTargetIn2dArray(int[][]arr,int target){
- int row=arr.length;
-     int col=arr[0].length;
+ int row=0;
+     int col=arr[0].length-1;
 
-      for(int i=0;i<row;i++){
+     while(row<arr.length&&col>=0){
 
-        for(int j=0;j<col;j++){
+      if(arr[row][col]==target) return new int[]{row,col};
 
-            if(arr[i][j]==target) return new int[]{i,j};
-
-            else if(arr[i][j]<target) {
-                row=row-1;
-            }
-            else{
-                col=col-1;
-            }
-        }
+      else if(arr[row][col]<target){
+        row++;
       }
+      else{
+        col--;
+      }
+     }
+
+    
+   
         return new int[]{-1,-1};
 
    }
